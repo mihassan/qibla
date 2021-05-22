@@ -3,13 +3,11 @@
 const kaaba = L.latLng(21.4225, 39.8262);
 let center = kaaba.clone();
 
-const map = L.map('map').setView(center, 16);
+const map = L.map('map').setView(center, 18);
 const qibla = L.geodesic([], { steps: 6 }).addTo(map);
 const marker = L.marker(kaaba, { draggable: true }).addTo(map);
 
-L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
+L.esri.basemapLayer('Imagery').addTo(map);
 
 const search = new GeoSearch.GeoSearchControl({
   provider: new GeoSearch.OpenStreetMapProvider(),
